@@ -42,7 +42,7 @@ def step_impl(context):
 @when('Create a new vote POST /votes. image_id "{image_id}", sub_id "{sub_id}", value "{value}"')
 def step_impl(context, image_id, sub_id, value):
     response = requests.post(thecatapi_url + "votes",
-                             json= {"image_id": image_id, "sub_id": sub_id, "value": int(value)},
+                             json={"image_id": image_id, "sub_id": sub_id, "value": int(value)},
                              headers=auth_headers)
 
     context.response_code = response.status_code
@@ -52,13 +52,13 @@ def step_impl(context, image_id, sub_id, value):
 
 @then('response "{key}" is "{expected_text}"')
 def step_impl(context, key, expected_text):
-    assert context.response_dict[f'{key}'] == expected_text, f"Expected text {expected_text}, " \
+    assert context.response_dict[key] == expected_text, f"Expected text {expected_text}, " \
                                                              f"but was {context.response_dict['{key}']}"
 
 
 @then('response "{key}" is not empty')
 def step_impl(context, key):
-    assert context.response_dict.get(f'{key}') is not None, "Expected not empty value"
+    assert context.response_dict.get(key) is not None, "Expected not empty value"
 
 
 @when('user gets created record by id')
