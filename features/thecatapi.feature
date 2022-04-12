@@ -12,7 +12,7 @@ Feature: showing off behave
      When Create a new vote POST /votes. image_id "asf2", sub_id "my-user1234", value "1"
      Then response code is "200"
      Then response "message" is "SUCCESS"
-     Then response "id" is "not empty"
+     Then response "id" is not empty
      When user gets created record by id
      Then response code is "200"
      Then received vote id matches with created
